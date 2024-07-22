@@ -120,7 +120,46 @@ h3{
   {
     margin-left: 20px;
   }
+  .exp_List {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border: 0.5px solid black; 
+  border-width: 0.5px ; 
+  border-radius: 0; 
+  margin-left: 10px;
+  
+}
 
+.exp_List:first-child {
+  border-radius: 5px 5px 0 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.exp_List:last-child {
+  border-radius: 0 0 5px 5px; 
+}
+
+  .name
+  {
+    font-weight: bold;
+  }
+  .amount
+  {
+    color: white;
+    border-radius: 15px;
+    padding:1px 10px;
+    font-size: small;
+
+  }
+  .custom-icon
+  {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
   
   
  

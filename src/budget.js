@@ -2,6 +2,8 @@ import React,{useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './budget.css'
 import {RemoveScrollBar} from 'react-remove-scroll-bar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 import Logo from './images/Logo.png' 
 
@@ -25,6 +27,9 @@ function Budget (){
     const [cost,setCost] = useState(0 )
     
     const [totalcost,setTotalCost] = useState(0)
+    const [searchItem,setSearchItem] = useState('')
+    
+    const [filterItem,setFilterItem] = useState([])
    
     const handleName =(e)=>
     {
@@ -38,21 +43,28 @@ function Budget (){
 
     const handleAdd =()=>
     {
-        const newTotalCost = purchaseList.reduce((prev,current)=> prev+current,0)
-        setTotalCost(newTotalCost)
-        setSpent(newTotalCost)
-        setRemaining(remaining-cost)
         
+       
 
         const newId = purchaseList.length ? purchaseList[purchaseList.length - 1].id + 1 : 0;
     const updatedItem = { id: newId, name: expName, amount: cost }
     setPurchaseList([...purchaseList, updatedItem])
-    setCost(0)
+
+    const listTotal = purchaseList.reduce((prev, current) => prev + current.amount, 0);
+   
+    
+    setSpent(listTotal)
+    setRemaining(remaining-cost)
+    
+  
+    setCost('')
+    setExpName('')
     
     
     
-        console.log(newTotalCost)
+        console.log(expName,cost)
         console.log(purchaseList)
+        console.log(listTotal)
       
 
     }
@@ -67,6 +79,19 @@ function Budget (){
         }
 
     }
+    const handlSearchINPut =(e)=>
+    {
+        setSearchItem(e.target.value)
+        
+    }
+    const handleSearh =()=>
+    {
+        const filtered = purchaseList.filter(list=>list.name.includes(searchItem))
+        setFilterItem(filtered) 
+        console.log(filterItem)
+       
+
+    }
 
     
 
@@ -76,8 +101,7 @@ function Budget (){
 
 
 
-
-
+   
     return(
         <div>
             
@@ -102,6 +126,30 @@ function Budget (){
 
                 <div>
                     <h3>Expenses</h3>
+                  <div className="d-flex align-items-center justify-content-around col-12 col-md-6">
+                    <input className='form-control ms-2 mb-2 rounded border border-2' onChange={handlSearchINPut}type="text" placeholder="search" />
+                    <FontAwesomeIcon icon={faMagnifyingGlass} className="custom-icon ms-3 " onClick={handleSearh}/>
+                   
+                    </div> 
+                    <div>
+                    {filterItem.map((item,id)=>
+                    {
+                        <div>{item.name}   {item.amount}</div>
+                    })}
+
+                    </div>
+                    
+
+
+                    {purchaseList.map((purchase,index)=>
+                    <div key={index} className=" exp_List">
+                        <div className="name">{purchase.name}</div>
+                        <div className="amount bg-primary">{euro}{purchase.amount}</div>
+
+                        </div>
+                    
+                    )}
+                    
                 </div>
                 <div>
                     <h3>Add Expenses</h3>
@@ -110,12 +158,12 @@ function Budget (){
 
                     <div className="form-group col-md-6 col-12">
                         <label className="form-label">Name</label>
-                        <input value={expName} onChange={handleName} className="form-control"/>
+                        <input value={expName} onChange={handleName} className="form-control rounded border border-2 "/>
 
                     </div>
                     <div className="form-group col-md-5 col-12">
                         <label className="form-label">Cost</label>
-                        <input value={cost} onChange={handleCost} className="form-control" type="number" />
+                        <input value={cost} onChange={handleCost} className="form-control rounded border border-2" type="number"  />
                        
                     </div>
                     <div className="col-md-1 d-flex align-items-end">
@@ -134,7 +182,7 @@ function Budget (){
 
 
            </div>
-           {/* <RemoveScrollBar/> */}
+           
         </div>
     )
 }
