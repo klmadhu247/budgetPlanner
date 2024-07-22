@@ -1,0 +1,104 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.heading
+{
+    font-family: "Luckiest Guy", cursive;
+  font-weight: 500;
+  font-style: normal;
+  margin-left: 30px;
+  margin-bottom: 10px;
+  font-size: 100px;
+  text-align: center;
+
+}
+.blue-color
+{
+    color: rgba(10, 10, 123, 0.863);
+}
+.white-color
+{
+    color: white;
+}
+.bg-custom
+{
+    background-color: rgb(95, 119, 255);
+    height: 100vh;
+    margin-left: -30px;
+}
+.logo
+{
+    color: rgb(235, 231, 24);
+    
+    transition: all 1s ease-in-out;
+     animation: rotate 4s  linear infinite;
+}
+
+@keyframes rotate
+{
+    from
+    {
+        transform: rotate(0deg);
+    }
+    to
+    {
+        transform: rotate(360deg);
+    }
+}
+.hdr h2{
+    font-weight: bolder;
+}
+ul
+{
+    list-style-type: none;
+}
+li
+{
+    padding: 15px 0;
+    padding-right: 15px;
+    opacity: 50;
+}
+li{
+    padding-left: 5px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+.budget {
+    background-color:rgba(169, 169, 169, 0.541); /* Adjust alpha to 0.5 for 50% opacity */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 20px;
+   }
+  .remaining
+  {
+    background-color: rgb(130, 183, 130);
+    color: rgb(2, 59, 2);
+    margin-left: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 20px;
+  }
+  .spent
+  {
+    background-color: rgb(118, 174, 230);
+    color: rgb(8, 8, 83);
+    margin-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+  }
+  .btn-budget
+  {
+    margin-left: 100px;
+  }
+  .btn-primary
+  {
+    height: 2px;
+  }
+ 
