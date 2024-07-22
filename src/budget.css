@@ -66,6 +66,15 @@ li{
     border-radius: 5px;
     font-weight: 500;
 }
+
+h3{
+    margin-left: 10px;
+}
+.form-group
+{
+    display: flex;
+    flex-direction: column;
+}
 .budget {
     background-color:rgba(169, 169, 169, 0.541); /* Adjust alpha to 0.5 for 50% opacity */
     display: flex;
@@ -97,8 +106,7 @@ li{
   {
     margin-left: 100px;
   }
-  .btn-primary
-  {
-    height: 2px;
-  }
+
+  
+  
  

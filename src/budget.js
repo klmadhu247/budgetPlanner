@@ -1,9 +1,28 @@
-import React from "react";
+import React,{useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './budget.css'
 import Logo from './images/Logo.png' 
 
 function Budget (){
+
+
+    const [budgetValue,setBudgetValue] = useState(2000)
+
+    const euro = '£';
+
+    const [remaining,setRemaining] = useState(2000)
+
+    const [spent,setSpent] = useState(0)
+
+
+
+
+
+
+
+
+
+
     return(
         <div>
             
@@ -20,9 +39,9 @@ function Budget (){
             <div>
                 <header className="ms-2 hdr"><h2>My Budget Planner</h2></header>
                 <ul className="d-flex ms-2 ">
-                    <li className="budget">Budget:<button className="btn btn-primary btn-budget ">Edit</button> </li>
-                    <li className="remaining">Remaining: </li>
-                    <li className="spent">Spent so far: </li>
+                    <li className="budget">Budget: {euro}{budgetValue}<button className="btn btn-primary btn-budget ">Edit</button> </li>
+                    <li className="remaining">Remaining: {euro} {remaining} </li>
+                    <li className="spent">Spent so far:{euro} {spent} </li>
                 </ul>
 
                 <div>
@@ -31,7 +50,7 @@ function Budget (){
                 <div>
                     <h3>Add Expenses</h3>
 
-                    <div className=" row d-flex  ms-2">
+                    <div className=" row d-flex justify-content-between  ms-1">
 
                     <div className="form-group col-md-6 col-12">
                         <label className="form-label">Name</label>
@@ -40,10 +59,12 @@ function Budget (){
                     </div>
                     <div className="form-group col-md-5 col-12">
                         <label className="form-label">Cost</label>
-                        <input className="form-control" />
+                        <input className="form-control" type="number" />
                        
                     </div>
-                    <button className="btn btn-primary col-md-3 ">Add</button>
+                    <div className="col-md-1 d-flex align-items-end">
+        <button className="btn btn-primary w-150">Add</button>
+      </div>
                     
                     
                     </div>
