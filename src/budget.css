@@ -46,7 +46,7 @@ body{
     color: rgb(235, 231, 24);
     
     transition: all 1s ease-in-out;
-     animation: rotate 4s  linear infinite;
+     animation: rotate 5s  linear infinite;
 }
 
 @keyframes rotate

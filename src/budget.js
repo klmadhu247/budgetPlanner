@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './budget.css'
 import {RemoveScrollBar} from 'react-remove-scroll-bar';
@@ -11,7 +11,7 @@ function Budget (){
 
     const [purchaseList,setPurchaseList] = useState([])
 
-    const [newItem,setNewItem] = useState({id:0,name:'',amount:0})
+    // const [newItem,setNewItem] = useState({id:0,name:'',amount:0})
 
 
     const [budgetValue,setBudgetValue] = useState(parseInt (2000))
@@ -33,6 +33,7 @@ function Budget (){
    
     const handleName =(e)=>
     {
+
         setExpName(e.target.value)
     }
     const handleCost =(e)=>
@@ -40,20 +41,24 @@ function Budget (){
         setCost(parseInt(e.target.value))
     }
     
-
+useEffect(()=>{
+    const listTotal = purchaseList.reduce((prev, current) => prev + current.amount, 0);
+    setSpent(listTotal)
+},[purchaseList])
     const handleAdd =()=>
     {
+
         
        
 
-        const newId = purchaseList.length ? purchaseList[purchaseList.length - 1].id + 1 : 0;
+        const newId = purchaseList.length ? purchaseList[purchaseList.length - 1].id + 1 : 1;
     const updatedItem = { id: newId, name: expName, amount: cost }
     setPurchaseList([...purchaseList, updatedItem])
 
-    const listTotal = purchaseList.reduce((prev, current) => prev + current.amount, 0);
+    
    
     
-    setSpent(listTotal)
+    
     setRemaining(remaining-cost)
     
   
@@ -62,9 +67,7 @@ function Budget (){
     
     
     
-        console.log(expName,cost)
-        console.log(purchaseList)
-        console.log(listTotal)
+        
       
 
     }
@@ -74,7 +77,7 @@ function Budget (){
         if(updatedBudget)
         {
             setBudgetValue(parseInt(updatedBudget))
-            setRemaining(parseInt(updatedBudget))
+            setRemaining((updatedBudget-spent))
             
         }
 
@@ -88,7 +91,9 @@ function Budget (){
     {
         const filtered = purchaseList.filter(list=>list.name.includes(searchItem))
         setFilterItem(filtered) 
-        console.log(filterItem)
+       
+        console.log(filtered)
+        
        
 
     }
@@ -124,10 +129,11 @@ function Budget (){
                     <FontAwesomeIcon icon={faMagnifyingGlass} className="custom-icon ms-3 cl-12 " onClick={handleSearh}/>
                    
                     </div> 
-                    <div>
+                    <div id='search'>
+                    {console.log(filterItem)}
                     {filterItem.map((item,id)=>
                     {
-                        <div>{item.name}   {item.amount}</div>
+                       return (<div key={id}>{item.name}   {item.amount}</div>)
                     })}
 
                     </div>
