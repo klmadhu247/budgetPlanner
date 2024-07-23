@@ -94,13 +94,6 @@ function Budget (){
     }
 
     
-
-
-
-
-
-
-
    
     return(
         <div>
@@ -126,9 +119,9 @@ function Budget (){
 
                 <div>
                     <h3>Expenses</h3>
-                  <div className="d-flex align-items-center justify-content-around col-12 col-md-6">
+                  <div className="d-flex align-items-center justify-content-around col-12 ">
                     <input className='form-control ms-2 mb-2 rounded border border-2' onChange={handlSearchINPut}type="text" placeholder="search" />
-                    <FontAwesomeIcon icon={faMagnifyingGlass} className="custom-icon ms-3 " onClick={handleSearh}/>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} className="custom-icon ms-3 cl-12 " onClick={handleSearh}/>
                    
                     </div> 
                     <div>

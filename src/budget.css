@@ -91,9 +91,15 @@ h3{
     background-color:rgba(169, 169, 169, 0.541); /* Adjust alpha to 0.5 for 50% opacity */
     display: flex;
     justify-content: center;
-   
     align-items: center;
     padding-left: 20px;
+    
+    transition: transform .1s ease;
+    
+   }
+   .budget:hover,.remaining:hover,.spent:hover
+   {
+    transform: scale(0.90)
    }
   .remaining
   {
@@ -105,7 +111,9 @@ h3{
     justify-content: space-around;
     align-items: center;
     padding-left: 20px;
+    transition: transform 0.1s ease;
   }
+
   .spent
   {
     background-color: rgb(118, 174, 230);
@@ -115,6 +123,7 @@ h3{
     justify-content: center;
     align-items: center;
     padding-left: 20px;
+    transition:  transform 0.1s ease;
   }
   .btn-budget
   {
